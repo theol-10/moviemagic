@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Magic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1521747116042-5b2f1e1c4b9e'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+            width: 100%;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        /* Form styling */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .form-group select, .form-group input {
+            background-color: #2a2a2a;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            padding: 10px 12px; /* Adjusted padding */
+            width: 100%;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            height: 45px;  /* Fixed height for dropdown */
+            line-height: 1.5; /* Vertically centered text */
+        }
+
+        /* Adjust the font size of the select dropdown */
+        .form-group select option {
+            font-size: 1rem;
+            padding: 10px; /* Optional: add padding to options */
+        }
+
+        .form-group select:focus, .form-group input:focus {
+            background-color: #3a3a3a;
+            outline: none;
+            box-shadow: 0 0 10px #f9c74f;
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, #f9c74f, #f9c74f);
+            color: #121212;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(249, 199, 79, 0.3);
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Movie suggestion */
+        .movie-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .movie-card img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .movie-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .movie-card h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .movie-card p {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Movie Magic</h1>
+        <p>Can't decide what to watch? Let Movie Magic suggest a movie for you!</p>
+
+        <!-- Form Container -->
+        <div class="form-container">
+            <form action="/get-movie" method="POST">
+                <div class="form-group">
+                    <label for="genre">Choose a Genre:</label>
+                    <select class="form-control" id="genre" name="genre">
+                        <option value="">Any Genre</option>
+                        <option value="28">Action</option>
+                        <option value="35">Comedy</option>
+                        <option value="18">Drama</option>
+                        <option value="27">Horror</option>
+                        <option value="12">Adventure</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="rating">Minimum Rating (1-10):</label>
+                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="10" step="0.1">
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Release Year:</label>
+                    <input type="number" class="form-control" id="year" name="year">
+                </div>
+
+                <!-- Movie Length Filter -->
+                <div class="form-group">
+                    <label for="length">Choose Movie Length:</label>
+                    <select class="form-control" id="length" name="length">
+                        <option value="">Any Length</option>
+                        <option value="0-30">Less than 30 minutes</option>
+                        <option value="30-60">30 minutes to 1 hour</option>
+                        <option value="60-120">1 to 2 hours</option>
+                        <option value="120+">More than 2 hours</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-custom">Get a Random Movie</button>
+            </form>
+
+            {% if message %}
+                <p class="message text-danger">{{ message }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+</body>
+</html>

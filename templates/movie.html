@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie['title'] }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .movie-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .movie-card img {
+            max-width: 300px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .movie-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .movie-card h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .movie-card p {
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .btn-back {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #f9c74f, #f9c74f);
+            color: #121212;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(249, 199, 79, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="movie-card">
+            <h2>{{ movie['title'] }}</h2>
+            <img src="https://image.tmdb.org/t/p/w500/{{ movie['poster_path'] }}" alt="{{ movie['title'] }}">
+            <p><strong>Overview:</strong> {{ movie['overview'] }}</p>
+            <p><strong>Rating:</strong> {{ movie['vote_average'] }}/10</p>
+            <p><strong>Release Date:</strong> {{ movie['release_date'] }}</p>
+            <p><strong>Runtime:</strong> {{ movie['Runtime']}} minutes</p>
+
+        
+            
+            <a href="/" class="btn-back">Pick Another Movie</a>
+        </div>
+    </div>
+</body>
+</html>

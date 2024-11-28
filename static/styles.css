@@ -1,0 +1,192 @@
+/* Global Reset and Layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(45deg, #4c6ef5, #e3a8ff);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Navbar */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 20px 50px;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.navbar .logo {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar .nav-links a:hover {
+    color: #e3a8ff;
+}
+
+/* Main Content */
+.container {
+    max-width: 800px;
+    margin-top: 100px;
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    color: #4c6ef5;
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Button Styling */
+.btn {
+    padding: 15px 25px;
+    background-color: #4c6ef5;
+    color: white;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: #e3a8ff;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(2px);
+}
+
+/* Movie Info Styling */
+.movie-info {
+    margin-top: 30px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.movie-info img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-info img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.movie-info p {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #333;
+    text-transform: uppercase;
+    transition: transform 0.3s ease;
+}
+
+/* Form Styling */
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+form input, form button {
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    width: 100%;
+}
+
+form button {
+    background-color: #4c6ef5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #e3a8ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .nav-links {
+        margin-top: 10px;
+    }
+
+    .container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .btn {
+        font-size: 1.3em;
+    }
+}
